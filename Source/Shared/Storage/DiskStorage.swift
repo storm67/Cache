@@ -189,7 +189,9 @@ extension DiskStorage {
    - Returns: A string path based on key
    */
   func makeFilePath(for key: Key) -> String {
-    return "\(path)/\(makeFileName(for: key))"
+      if let key = key as? NSString {
+      return "\(path)/\(key)"
+      } else { return "" }
   }
 
   func createDirectory() throws {
